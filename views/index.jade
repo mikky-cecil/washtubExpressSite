@@ -1,5 +1,69 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+    nav.navbar.navbar-dark.bg-dark.fixed-top
+        span.navbar-brand
+            span(class='badge badge-success')= title
+        span.navbar-text Welcome to our test
+    br
+    br
+
+    // Wrapper
+    .container
+        .row
+            .col-sm-4
+                // USER INFO
+                #userInfo(class='card')
+                    .card-body
+                        h2(class='card-title') User Info
+                        p
+                            strong Name:
+                            |  <span id='userInfoName'></span>
+                            br
+                            strong Age:
+                            |  <span id='userInfoAge'></span>
+                            br
+                            strong Gender:
+                            |  <span id='userInfoGender'></span>
+                            br
+                            strong Location:
+                            |  <span id='userInfoLocation'></span>
+                // /USER INFO
+                br
+
+                // ADD USER
+                #addUser(class='card')
+                    .card-body
+                        h2 Add User
+                        form
+                            fieldset
+                                input#inputUserName(type='text', placeholder='Username')
+                                br
+                                input#inputUserEmail(type='text', placeholder='Email')
+                                br
+                                input#inputUserFullname(type='text', placeholder='Full Name')
+                                br
+                                input#inputUserAge(type='text', placeholder='Age')
+                                br
+                                input#inputUserLocation(type='text', placeholder='Location')
+                                br
+                                input#inputUserGender(type='text', placeholder='gender')
+                                br
+                                button#btnAddUser Add User
+                // /ADD USER
+
+            // USER LIST
+            .col
+                .card#userList
+                    .card-body
+                        //#userList
+                        h2(class='card-title') User List
+                        table
+                            thead
+                                th UserName
+                                th Email
+                                th Delete?
+                            tbody
+            // /USER LIST
+
+    // /WRAPPER

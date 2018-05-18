@@ -4,8 +4,14 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+// Database
+var mongo = require('mongodb');
+var monk = require('monk');
+const url = 'localhost:27017/washtubexpresssite'; // Connection URL
+var db = monk(url);
+
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var machinesRouter = require('./routes/machines');
 
 var app = express();
 
@@ -19,8 +25,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// db access for routers
+app.use(function(req,res,next){
+    req.db = db;
+    next();
+});
+
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/machines', machinesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
