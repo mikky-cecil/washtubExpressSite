@@ -12,6 +12,7 @@ A web application for tracking machine inventory for the Washtub Laundromat. Mad
 * run ``` npm install ``` in the working directory
 * run ``` mongod --dbpath ./data ``` to start up the mongodb
 * run ``` npm start ``` and browse to http://localhost:3000
+* run ``` npm test ``` to run mocha tests
 
 ## Screenshots
 
