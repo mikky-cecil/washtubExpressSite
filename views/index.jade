@@ -1,10 +1,10 @@
 extends layout
 
 block content
-    nav.navbar.navbar-dark.bg-dark.fixed-top
+    nav.navbar.navbar-dark.fixed-top
         span.navbar-brand
-            span(class='badge badge-success')= title
-        span.navbar-text Welcome to our test
+            span(class='badge badge-danger')= title
+        span.navbar-text Inventory
     br
     br
 
@@ -12,58 +12,60 @@ block content
     .container
         .row
             .col-sm-4
-                // USER INFO
-                #userInfo(class='card')
+                // MACHINE INFO
+                #machineInfo(class='card')
                     .card-body
-                        h2(class='card-title') User Info
+                        h2(class='card-title') Machine Info
+                        #alertMachineInfoError.alert.alert-danger Error loading machine info
+                        #alertMachineInfoEmpty.alert.alert-info Select a machine from the list to view its info.
                         p
-                            strong Name:
-                            |  <span id='userInfoName'></span>
+                            strong Type:
+                            |  <span id='machineInfoType'></span>
                             br
-                            strong Age:
-                            |  <span id='userInfoAge'></span>
+                            strong Load:
+                            |  <span id='machineInfoLoad'></span>
                             br
-                            strong Gender:
-                            |  <span id='userInfoGender'></span>
-                            br
-                            strong Location:
-                            |  <span id='userInfoLocation'></span>
-                // /USER INFO
+                            strong Cost:
+                            |  <span id='machineInfoCost'></span>
+                // /MACHINE INFO
                 br
 
-                // ADD USER
-                #addUser(class='card')
+                // ADD MACHINE
+                #addMachine(class='card')
                     .card-body
-                        h2 Add User
+                        h2 Add Machine
                         form
                             fieldset
-                                input#inputUserName(type='text', placeholder='Username')
-                                br
-                                input#inputUserEmail(type='text', placeholder='Email')
-                                br
-                                input#inputUserFullname(type='text', placeholder='Full Name')
-                                br
-                                input#inputUserAge(type='text', placeholder='Age')
-                                br
-                                input#inputUserLocation(type='text', placeholder='Location')
-                                br
-                                input#inputUserGender(type='text', placeholder='gender')
-                                br
-                                button#btnAddUser Add User
-                // /ADD USER
+                                .form-group
+                                    input.form-control#inputMachineType(type='text', placeholder='Type', required)
+                                .form-group
+                                    .input-group
+                                        input.form-control#inputMachineLoad(type='text', placeholder='Load', aria-describedby='inputGroupAppend')
+                                        .input-group-append
+                                            span.input-group-text#inputGroupAppend lbs
+                                        .invalid-feedback Must be a whole number (i.e. "10")
+                                .form-group
+                                    .input-group
+                                        .input-group-prepend
+                                            span.input-group-text#inputGroupPrepend $
+                                        input.form-control#inputMachineCost(type='text', placeholder='Cost', aria-describedby='inputGroupPrepend')
+                                        .invalid-feedback Must be in valid USD format (i.e. "7.00")
+                                button.btn.btn-primary#btnAddMachine(type='submit') Add Machine
+                // /ADD MACHINE
 
-            // USER LIST
+            // MACHINE LIST
             .col
-                .card#userList
+                .card#machineList
                     .card-body
-                        //#userList
-                        h2(class='card-title') User List
+                        //#machineList
+                        h2(class='card-title') Machine List
+                        #alertEmptyMachineList.alert.alert-info Looks like you don't have any machines yet! You can add some using the Add Machine form on the bottom left of this page. 
                         table
                             thead
-                                th UserName
-                                th Email
+                                th Type
+                                th Load
                                 th Delete?
                             tbody
-            // /USER LIST
+            // /MACHINE LIST
 
     // /WRAPPER
