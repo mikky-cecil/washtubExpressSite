@@ -16,10 +16,10 @@ var machinesRouter = require('./routes/machines');
 var app = express();
 
 // Initialize the app.
-var server = app.listen(process.env.PORT || 8080, function () {
-	var port = server.address().port;
-	console.log("App now running on port", port);
-});
+// var server = app.listen(process.env.PORT || 8080, function () {
+// 	var port = server.address().port;
+// 	console.log("App now running on port", port);
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
