@@ -7,13 +7,19 @@ var logger = require('morgan');
 // Database
 var mongo = require('mongodb');
 var monk = require('monk');
-const url = 'localhost:27017/washtubexpresssite'; // Connection URL
+const url = process.env.MONGODB_URI || "mongodb://localhost:27017/washtubexpresssite"; // Connection URL
 var db = monk(url);
 
 var indexRouter = require('./routes/index');
 var machinesRouter = require('./routes/machines');
 
 var app = express();
+
+// Initialize the app.
+var server = app.listen(process.env.PORT || 8080, function () {
+	var port = server.address().port;
+	console.log("App now running on port", port);
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
