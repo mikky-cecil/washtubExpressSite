@@ -34,7 +34,7 @@ describe('Delete Machine', function () {
 
 			var machineId = doc._id;
 			request(url)
-				.delete('/machines/deletemachine/' + machineId)
+				.delete('/api/machines/deletemachine/' + machineId)
 				.expect(200)
 				.end(function (err, res) {
 					if (err) {
@@ -58,7 +58,7 @@ describe('Delete Machine', function () {
 		});
 
 		request(url)
-			.delete('/machines/deletemachine/' + machineId)
+			.delete('/api/machines/deletemachine/' + machineId)
 			.expect(400, { msg: 'error: machine doesn\'t exist' })
 			.end(function (err, res) {
 				if (err)

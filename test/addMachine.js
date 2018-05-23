@@ -31,7 +31,7 @@ describe('Add Machine', function(){
 			};
 		
 		request(url)
-		.post('/machines/addmachine')
+		.post('/api/machines/addmachine')
 			.send(newMachine)
 			.expect(201) // TODO: add location header
 			.expect(function (res){
@@ -66,7 +66,7 @@ describe('Add Machine', function(){
 		async.each(badCosts, function (cost, callback){
 			newMachine['cost'] = cost;
 			request(url)
-				.post('/machines/addmachine')
+				.post('/api/machines/addmachine')
 				.send(newMachine)
 				.expect(400, { msg: 'error: invalid machine info'})
 				.end(function (err, res){

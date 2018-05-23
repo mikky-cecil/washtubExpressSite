@@ -7,7 +7,7 @@ var monk = require('monk');
 var async = require('async');
 require('./helper.js');
 
-var url = 'http://localhost:3000';
+var url = 'http://localhost:5000';
 
 describe('Get Machines', function(){
 	before(function (done){
@@ -38,7 +38,7 @@ describe('Get Machines', function(){
 
 	it('Gets all machines', function (done){
 		request(url)
-		.get('/machines/machinelist')
+		.get('/api/machines/machinelist')
 		.expect(200)
 		.end(function (err, res){
 			if(err){
@@ -64,7 +64,7 @@ describe('Get Machines', function(){
 			var newMachine = doc;
 			var machineId = doc._id;
 			request(url)
-			.get('/machines/machine/' + machineId)
+			.get('/api/machines/machine/' + machineId)
 			.expect(200)
 			.end(function (err, res){
 				if(err){

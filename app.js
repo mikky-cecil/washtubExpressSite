@@ -15,12 +15,6 @@ var machinesRouter = require('./routes/machines');
 
 var app = express();
 
-// Initialize the app.
-// var server = app.listen(process.env.PORT || 8080, function () {
-// 	var port = server.address().port;
-// 	console.log("App now running on port", port);
-// });
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
@@ -37,8 +31,8 @@ app.use(function(req,res,next){
     next();
 });
 
-app.use('/', indexRouter);
-app.use('/machines', machinesRouter);
+// app.use('/', indexRouter);
+app.use('/api/machines', machinesRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -55,5 +49,9 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+// API port
+const port = process.env.PORT || 5000;
+app.listen(port);
 
 module.exports = app;
