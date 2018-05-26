@@ -166,7 +166,7 @@ class MachineListRow extends Component{
     return (
       <tr onClick={(e) => { this.state.handleClick(e, machine) }}>
         <td>{machine.type}</td>
-        <td>{machine.cost}</td>
+        <td>{machine.load} lbs</td>
         <td>
           <a href="" className="linkDeleteMachine text-danger" onClick={(e) => this.state.handleDelete(e, machine._id)}>Delete</a>
         </td>
@@ -200,8 +200,8 @@ function MachineInfo (props) {
         { !noMachine ? (
             <p>
               <b>Type:</b> { machine.type }<br />
-              <b>Load:</b> { machine.load }<br />
-              <b>Cost:</b> { machine.cost }<br />
+              <b>Load:</b> { machine.load } lbs<br />
+              <b>Cost:</b> ${ machine.cost }<br />
             </p>
           ) : ( 
             <p></p> 
